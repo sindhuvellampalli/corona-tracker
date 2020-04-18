@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+.perfect-scroll-ref-id {
+    height: 8rem;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 15px;
+    line-height: inherit;
+    white-space: nowrap;
+    font-weight: bold;
+}

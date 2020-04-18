@@ -1,0 +1,213 @@
+<!-- <app-dashboard></app-dashboard> -->
+<!-- <router-outlet></router-outlet> -->
+
+<div class="container-fluid pl-0 pr-0 nav-header">
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <div class="container-fluid pl-0 pr-0">
+            <div class=row>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                    <div>
+                        <a class="navbar-brand" href="#">COVID-19 TRACKER</a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                    <div>
+                        <a class="navbar-brand" href="#">LAST UPDATED {{cardsData?.lastupdatedtime}}</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container-fluid totalCards">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 individualCards">
+            <div class="card text-center my-auto">
+                <div class="cardOne">
+                    <div>CONFIRMED</div>
+                    <div>{{cardsData?.confirmed}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 individualCards">
+            <div class="card text-center my-auto">
+                <div class="cardTwo">
+                    <div>ACTIVE</div>
+                    <div>{{cardsData?.active}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 individualCards">
+            <div class="card text-center my-auto">
+                <div class="cardThree">
+                    <div>RECOVERED</div>
+                    <div>{{cardsData?.recovered}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 individualCards">
+            <div class="card text-center my-auto">
+                <div class="cardFour">
+                    <div>DECEASED</div>
+                    <div>{{cardsData?.deaths}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+<p>Click on the State to know more information</p></div>
+<!-- TABLE -->
+
+<div class="container-fluid">
+    <div class="card table-card-ref">
+        
+
+
+        <perfect-scrollbar class="scrollbar">
+            <div class="perfect-scroll-bar-ref table-responsive">
+
+                <table class="table" sortable-table>
+                    <thead class=" table-dark table-striped">
+                        <tr>
+
+                            <th class="myvisit-col-acc">
+                                <label>STATE/UI</label>
+                            </th>
+
+                            <th class="myvisit-col-date">
+                                <label>CONFIRMED</label>
+                            </th>
+
+                            <th class="myvisit-col-city">
+                                <label>ACTIVE</label>
+                            </th>
+
+                            <th class="myvisit-col-mngr">
+                                <label>RECOVERED</label>
+                            </th>
+
+                            <th class="myvisit-col-status">
+                                <label>DECEASED</label>
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbodyclass">
+                        <tr *ngFor="let states of tableData">
+                            <td class="myvisit-col-acc" (click)="showDistricts(submit,states)">
+                                {{states.state}}
+                            </td>
+
+                            <td class="myvisit-col-date">{{states.confirmed}}
+                            </td>
+
+                            <td class="myvisit-col-city">{{states.active}}</td>
+
+                            <td class="myvisit-col-mngr">{{states.recovered}}
+                            </td>
+
+                            <td class="myvisit-col-status">{{states.deaths}}</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </perfect-scrollbar>
+    </div>
+</div>
+
+<ng-template #submit let-modal>
+    <div class="modal-header header-ref">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body model-body-ref">
+       
+        <div class="container-fluid pl-0 pr-0">
+            <div>
+                
+
+                <perfect-scrollbar class="scrollbar">
+                    <div class="perfect-scroll-bar-ref table-responsive">
+
+                    <table class="table popup-table" sortable-table>
+                        <thead class=" table-dark table-striped">
+                            <tr>
+
+                                <th>
+                                    <label>DISTRICTS</label>
+                                </th>
+
+                                <th>
+                                    <label>CONFIRMED</label>
+                                </th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody class="tbodyclass">
+                       <tr *ngFor = "let districts of popupData | keyvalue">
+                         <td >
+                           {{districts.key}} 
+                         </td>
+             
+                         <td  >{{districts.value.confirmed}}
+                         </td>
+           
+                        
+           
+                         
+                       </tr>
+                     </tbody>
+                    </table>
+
+                    </div>
+                </perfect-scrollbar>
+            </div>
+        </div>
+
+   
+  
+
+
+    </div>
+
+
+</ng-template>
